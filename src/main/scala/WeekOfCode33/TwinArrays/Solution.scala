@@ -15,10 +15,12 @@ object Solution {
     val minSum = A(0)._1 + minFromB(A(0)._2)
 
     def minIter(indexOfA: Int, minSum: Int): Int = {
-      val a = A(indexOfA)
-      val sum = a._1 + minFromB(a._2)
+        val a = A(indexOfA)
+        val sum = a._1 + minFromB(a._2)
 
-      if (sum > minSum) minSum else minIter(indexOfA + 1, sum)
+        if (sum > minSum) minSum
+        else if (indexOfA + 1 == A.length) minSum
+        else minIter(indexOfA + 1, sum)
     }
 
     println(minIter(1, minSum))
